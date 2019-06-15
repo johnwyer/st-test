@@ -1,6 +1,6 @@
 const path = require("path");
 
-console.log('in config');
+console.log("in config");
 
 module.exports = {
   pluginOptions: {
@@ -14,10 +14,7 @@ module.exports = {
 module.exports = {
   css: {
     loaderOptions: {
-      // передача настроек в sass-loader
       sass: {
-        // @/ это псевдоним к каталогу src/ поэтому предполагается,
-        // что у вас в проекте есть файл `src/variables.scss`
         data: `@import "~@/styles/global.scss";`
       }
     }
@@ -27,7 +24,7 @@ module.exports = {
 module.exports = {
   devServer: {
     proxy: {
-      '^/api': {
+      "^/api": {
         target: "http://localhost:8090",
         ws: true,
         changeOrigin: true

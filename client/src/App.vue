@@ -48,22 +48,16 @@ export default {
   },
   watch: {
     itemsList(val) {
-      // eslint-disable-next-line
-      //console.log("App.vue watch itemsList ", val);
       eventEmitter.$emit("itemsListUpdated", val);
     }
   },
   methods: {
     dialogShow(item){
-      // eslint-disable-next-line
-      //console.log('App.vue dialogShow() ', item);
       this.filter.showItem.selected = item.id;
       this.updateQueryString();
       eventEmitter.$emit("modalOpen", item);
     },
     dialogHide(){
-      // eslint-disable-next-line
-      //console.log('App.vue dialogHide() ');
       this.filter.showItem.selected = '';
       this.updateQueryString();
       eventEmitter.$emit("modalClose");
@@ -106,9 +100,6 @@ export default {
       }
            
       if(showModal) {            
-        //this.filter.showItem.selected = modalItem.id;
-        // eslint-disable-next-line
-        //console.log("App.vue filterList ", showModal, modalItem, this.filter.showItem.selected, eventEmitter);
         queryString.showItem = modalItem.id;
         this.$nextTick(() => {
           this.dialogShow(modalItem);
@@ -119,8 +110,6 @@ export default {
       }
       
       this.itemsList = items;
-      // eslint-disable-next-line 
-      //console.log("App.vue filterList queryString ", queryString);
 
       if(Object.keys(queryString).length !== 0) {
         this.updateQueryString();
@@ -160,7 +149,7 @@ export default {
       });
       this.itemsListBase = [ ...this.itemsList ];
 
-      //prepare filter values
+      //init filter values
       let years = [""];
       this.itemsList.forEach(item => {
         if (!this.filter.byType.values.includes(item.type)) {
