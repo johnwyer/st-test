@@ -14,3 +14,7 @@
 7. в директории client выполните команду `npm run serve`
 ```
 <img src="https://johnwyer.github.io/formula/test.jpg" alt="" />
+
+Технологии:
+	- Vue.js, 
+	- VueRouter
