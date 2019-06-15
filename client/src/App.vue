@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <app-filter 
-      :app-filters.sync="filter" 
+      :app-filters="filter" 
       @filterChange="filterData"
       @filterReset="filterReset"
     ></app-filter>
