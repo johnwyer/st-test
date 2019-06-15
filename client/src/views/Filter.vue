@@ -115,9 +115,6 @@ export default {
       }      
     }
   },
-  created(){
-    // eslint-disable-next-line
-    //console.log('Filter.vue created');
-  }
+  created(){}
 }
 </script>

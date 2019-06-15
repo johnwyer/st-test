@@ -1,17 +1,13 @@
 <template>
   <div id="app">
-
-      <app-filter 
-        :app-filters.sync="filter" 
-        @filterChange="filterData"
-        @filterReset="filterReset"
-      ></app-filter>
-      <router-view>
-      <app-grid 
-        @itemsListUpdated="itemsList"        
-      ></app-grid>
-      </router-view>      
-
+    <app-filter 
+      :app-filters.sync="filter" 
+      @filterChange="filterData"
+      @filterReset="filterReset"
+    ></app-filter>
+    <app-grid 
+      @itemsListUpdated="itemsList"        
+    ></app-grid>
   </div>
 </template>
 
@@ -47,7 +43,6 @@ export default {
           selected: ''
         }
       },
-      //queryStringItems:['byId', 'byType', 'byYear', 'showItem'],
       loading: true,
       errored: false
     };
@@ -55,14 +50,14 @@ export default {
   watch: {
     itemsList(val) {
       // eslint-disable-next-line
-      console.log("App.vue watch itemsList ", val);
+      //console.log("App.vue watch itemsList ", val);
       eventEmitter.$emit("itemsListUpdated", val);
     }
   },
   methods: {
     dialogShow(item){
       // eslint-disable-next-line
-      console.log('App.vue dialogShow() ', item);
+      //console.log('App.vue dialogShow() ', item);
       this.filter.showItem.selected = item.id;
       this.updateQueryString();
       eventEmitter.$emit("modalOpen", item);
@@ -126,7 +121,7 @@ export default {
       
       this.itemsList = items;
       // eslint-disable-next-line 
-      console.log("App.vue filterList queryString ", queryString);
+      //console.log("App.vue filterList queryString ", queryString);
 
       if(Object.keys(queryString).length !== 0) {
         this.updateQueryString();
@@ -179,7 +174,6 @@ export default {
       this.filter.byYear.values = _.sortBy(years);
     },    
     initQueryString(){      
-      /* eslint-disable */
       let query = this.$route.query;
       if(Object.keys(query).length === 0) {
         const routerQueryParams = this.getQueryString();
@@ -196,7 +190,6 @@ export default {
           if(query.hasOwnProperty(key)) {            
             if(query[key] != this.filter[key].selected) {
               isUpdated = true;
-              console.log(`query key `, key, query[key], this.filter[key].selected);
               this.filter[key].selected = query[key];
             }
           }          
@@ -215,8 +208,6 @@ export default {
       return queryParams;
     },    
     updateQueryString(){
-      /* eslint-disable */
-      console.log('App.vue updateQueryString()');
       let query = this.getQueryString();
       this.$router.push({ 
         name: 'home', 
@@ -228,15 +219,6 @@ export default {
   components: {
     appFilter: AppFilter,
     appGrid: AppGrid
-  },
-  beforeMount: function() {
-    /*
-    axios.get(`/api/data/data`)
-      .then((response) => {
-        //console.log(response.data);
-        this.json = response.data;
-      });     
-      */
   },
   created(){
     eventEmitter.$on("dialogShow", (item) => {
@@ -254,7 +236,7 @@ export default {
         this.initData();
         this.initQueryString(); 
       })
-      .catch((error) => {
+      .catch(() => {
         this.error = true;
       })
       .finally(() => {

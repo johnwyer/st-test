@@ -78,27 +78,16 @@ export default {
     }
   },
   created() {
-    // eslint-disable-next-line
-    //console.log("Grid.vue created");
     eventEmitter.$on("itemsListUpdated", (items) => {
-      // eslint-disable-next-line
-      //console.log(`Grid.vue itemsListUpdated `, items);
       this.itemsList = items;
     });
     eventEmitter.$on("modalOpen", (item) => {
-      // eslint-disable-next-line
-      //console.log(`Grid.vue eventEmitter.modalOpen `, item);
-      //this.$nextTick(() => {
-        this.showModal(item);
-      //});
+      this.showModal(item);
     });
     eventEmitter.$on("modalClose", () => {
       this.hideModal();
     });    
   },
-  mounted() {
-    // eslint-disable-next-line
-    //console.log("Grid.vue mounted");
-  }
+  mounted() {}
 };
 </script>
