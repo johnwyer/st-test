@@ -16,8 +16,7 @@ import { _ } from "vue-underscore";
 import AppFilter from "@/views/Filter.vue";
 import AppGrid from "@/views/Grid.vue";
 import { eventEmitter } from "./main";
-
-const axios = require('axios');
+import axios from 'axios';
 
 export default {
   name: "app",
