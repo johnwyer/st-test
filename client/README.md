@@ -1,4 +1,4 @@
-# smashing-team
+# st-test
 
 ## Project setup
 ```
