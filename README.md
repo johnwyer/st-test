@@ -13,6 +13,8 @@
 6. в корневой директории выполните команду `npm run server`
 7. в директории client выполните команду `npm run serve`
 ```
+
+## Screenshot
 <img src="https://johnwyer.github.io/formula/test.jpg" alt="" />
 
 Технологии:
