@@ -17,6 +17,6 @@
 ## Screenshot
 <img src="https://johnwyer.github.io/formula/test.jpg" alt="" />
 
-## Technolgies
+## Technologies
 	- Vue.js, 
 	- VueRouter
