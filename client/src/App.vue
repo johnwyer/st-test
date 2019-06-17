@@ -74,7 +74,9 @@ export default {
         queryString.byId = 'desc';
       }    
 
-      if (this.filter.byType.selected !== '' && this.filter.byType.values.includes(this.filter.byType.selected)) { 
+      // eslint-disable-next-line
+      //console.log(this.filter.byType.values.includes(this.filter.byType.selected));
+      if (this.filter.byType.selected !== '' && this.filter.byType.values.includes(Number(this.filter.byType.selected))) { 
         items = _.filter(items, (item) => {
           return item.type == this.filter.byType.selected;
         });
@@ -110,6 +112,9 @@ export default {
       }
       
       this.itemsList = items;
+
+      // eslint-disable-next-line
+      //console.log('App.vue filterList() ', queryString, this.itemsList);
 
       if(Object.keys(queryString).length !== 0) {
         this.updateQueryString();

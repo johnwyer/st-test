@@ -34,10 +34,10 @@
             >
               <option 
                 :key="item.id"
-                v-for="(item) in filterType"              
-                :value="item.id"
-                :selected="item.id == filter.byType.selected"
-              >{{item.title}}</option>
+                v-for="(item, index) in filter.byType.values"              
+                :value="item"
+                :selected="item == filter.byType.selected"
+              >{{filterType[index].title}}</option>
             </select>
           </div>
         </form>
