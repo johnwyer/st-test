@@ -3,7 +3,6 @@
     <modal
       v-if="modal.show"
       v-on:close="beforeHideModal"
-      class="modal-auth modal-chat"
       key="modal-auth"
       v-cloak
     >
