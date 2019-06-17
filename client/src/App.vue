@@ -66,6 +66,7 @@ export default {
       let items = [ ...this.itemsListBase ];
       let queryString = {};
 
+      //check sort byId
       if (this.filter.byId.selected === "" || this.filter.byId.selected === "asc") {
         items = items.sort((a, b) => (a.id > b.id) ? 1 : -1);
         queryString.byId = 'asc';
@@ -74,8 +75,7 @@ export default {
         queryString.byId = 'desc';
       }    
 
-      // eslint-disable-next-line
-      //console.log(this.filter.byType.values.includes(this.filter.byType.selected));
+      //check filter byType
       if (this.filter.byType.selected !== '' && this.filter.byType.values.includes(Number(this.filter.byType.selected))) { 
         items = _.filter(items, (item) => {
           return item.type == this.filter.byType.selected;
@@ -83,6 +83,7 @@ export default {
         queryString.byType = this.filter.byType.selected;
       }
 
+      //check filter byYear
       if (this.filter.byYear.selected !== '' && this.filter.byYear.values.includes(this.filter.byYear.selected)) {
         items = items.filter((item) => {
           return item.date.split('-')[0] == this.filter.byYear.selected;
@@ -90,6 +91,7 @@ export default {
         queryString.byYear = this.filter.byYear.selected;
       }
 
+      //check filter for modal
       let showModal = false;
       let modalItem = {};
       if (this.filter.showItem.selected !== '') {
@@ -112,9 +114,6 @@ export default {
       }
       
       this.itemsList = items;
-
-      // eslint-disable-next-line
-      //console.log('App.vue filterList() ', queryString, this.itemsList);
 
       if(Object.keys(queryString).length !== 0) {
         this.updateQueryString();
