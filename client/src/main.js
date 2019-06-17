@@ -5,9 +5,10 @@ import store from './store';
 
 Vue.use(require('vue-moment'));
 
-require('@/styles/global.scss');
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap';
+require('@/styles/global.scss');
+
 window.$ = window.jQuery = require('jquery');
 
 Vue.config.productionTip = false;
