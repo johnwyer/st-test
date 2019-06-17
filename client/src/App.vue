@@ -225,7 +225,7 @@ export default {
         this.initQueryString(); 
       })
       .catch(() => {
-        this.error = true;
+        this.errored = true;
       })
       .finally(() => {
         this.loading = false;
