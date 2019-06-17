@@ -2,7 +2,7 @@
 
 ## Project setup
 ```
-1. git clone
+1. git clone https://github.com/johnwyer/st-test.git
 ```
 не успел синхронизировать сервер и фронтэнд, придётся запускать через два терминала
 ```
