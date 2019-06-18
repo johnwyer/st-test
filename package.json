@@ -7,7 +7,7 @@
         "test": "echo \"Error: no test specified\" && exit 1",
         "start": "node server/server.js",
         "server": "nodemon server/server.js",
-        "serve": "vue-cli-service serve --prefix client",
+        "serve": "npm run serve --prefix client",
         "dev": "concurrently \"npm run server\" \"npm run serve\"",
         "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
     },
