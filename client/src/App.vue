@@ -115,6 +115,9 @@ export default {
       
       this.itemsList = items;
 
+      // eslint-disable-next-line
+      //console.log('App.vue filterList() ', queryString, this.itemsList);
+
       if(Object.keys(queryString).length !== 0) {
         this.updateQueryString();
       }

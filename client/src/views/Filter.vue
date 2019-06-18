@@ -77,7 +77,7 @@
 <script>
 export default {
   props: {    
-    appFilters: Object
+    appFilters: {}
   },
   data() {
     return {
@@ -90,12 +90,6 @@ export default {
     }
   },
   watch: {
-    'filter.byYear.selected'(value){
-      value === '' ? this.$refs.filterByYear.value = '' : '';
-    },
-    'filter.byType.selected'(value){
-      value === '' ? this.$refs.filterByType.value = '' : '';
-    }
   },
   components: {
   },
