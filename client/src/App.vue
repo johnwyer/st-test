@@ -115,9 +115,6 @@ export default {
       
       this.itemsList = items;
 
-      // eslint-disable-next-line
-      //console.log('App.vue filterList() ', queryString, this.itemsList);
-
       if(Object.keys(queryString).length !== 0) {
         this.updateQueryString();
       }
@@ -201,7 +198,7 @@ export default {
       });
 
       return queryParams;
-    },    
+    },
     updateQueryString(){
       let query = this.getQueryString();
       this.$router.push({ 
@@ -212,8 +209,8 @@ export default {
   },  
   computed: {},
   components: {
-    appFilter: AppFilter,
-    appGrid: AppGrid
+    AppFilter,
+    AppGrid
   },
   created(){
     eventEmitter.$on("dialogShow", (item) => {
