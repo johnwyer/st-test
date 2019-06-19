@@ -2,12 +2,13 @@ import Vue from 'vue';
 import App from './App.vue';
 import router from './router';
 import store from './store';
+import moment from 'vue-moment';
 
-Vue.use(require('vue-moment'));
+Vue.use(moment);
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap';
-require('@/styles/global.scss');
+import '@/styles/global.scss';
 
 window.$ = window.jQuery = require('jquery');
 
