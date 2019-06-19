@@ -1,9 +1,9 @@
 <template>
   <div class="container-fluid">
     <modal
-      v-if="modal.open"
+      v-if="modal.isOpen"
       v-on:close="beforeCloseModal"
-      key="modal-auth"
+      key="modal-video"
       v-cloak
     >
       <div class="block">
@@ -17,7 +17,7 @@
       <div
         class="col-lg-3 col-md-4 col-12 col-item"
         v-for="(item) in itemsList"
-        v-bind:key="item.id"
+        :key="item.id"
         :class="item.type === 2 ? 'has-video' : ''"
       >           
         <div class="item-wrapper">
@@ -52,7 +52,7 @@ export default {
     return {
       itemsList: this.items,
       modal: {
-        open: false,
+        isOpen: false,
         src: null
       }
     };
@@ -66,13 +66,13 @@ export default {
     },
     openModal: function(item) {
       this.modal.src = item.src;   
-      this.modal.open = true;
+      this.modal.isOpen = true;
     },
     beforeCloseModal: function(){
       eventEmitter.$emit('onModalClose');
     },
     closeModal: function() {
-      this.modal.open = false;
+      this.modal.isOpen = false;
       this.modal.src = null;
     }
   },
