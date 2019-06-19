@@ -1,7 +1,6 @@
 const express = require('express');
 const router = express.Router();
-
-var fs = require("fs");
+const fs = require("fs");
 
 router.get('/data', (req, res) => {
     fs.readFile("server/nba.json", function(error, buf) {
