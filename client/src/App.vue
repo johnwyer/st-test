@@ -146,7 +146,7 @@ export default {
       this.filterList();
     },
     initData() {
-      let data = JSON.parse(JSON.stringify(this.json));
+      const data = JSON.parse(JSON.stringify(this.json));
       //init items list
       this.itemsList = Object.keys(data).map(key => {
         return data[key];
@@ -155,18 +155,14 @@ export default {
 
       //init filter values
       let years = [""];
-      this.itemsList.forEach(item => {
-        if (!this.filter.byType.values.includes(item.type)) {
-          this.filter.byType.values.push(item.type);
-        }
-        if (!years.includes(item.date.split("-")[0])) {
-          years.push(item.date.split("-")[0]);
-        }
+      this.itemsList.forEach((item) => {
+        !this.filter.byType.values.includes(item.type) ? this.filter.byType.values.push(item.type) : '';
+        !years.includes(item.date.split("-")[0]) ? years.push(item.date.split("-")[0]) : '';
       });
       this.filter.byYear.values = _.sortBy(years);
     },    
     initQueryString(){      
-      let query = this.$route.query;
+      const query = this.$route.query;
       if(Object.keys(query).length === 0) {
         const routerQueryParams = this.getQueryString();
 
@@ -191,7 +187,7 @@ export default {
       }
     },
     getQueryString(){
-      const queryParams = {};
+      let queryParams = {};
       const filterQueryParams = Object.keys(this.filter);      
       filterQueryParams.forEach((key) => {          
         queryParams[key] = this.filter[key].selected;
@@ -200,7 +196,7 @@ export default {
       return queryParams;
     },
     updateQueryString(){
-      let query = this.getQueryString();
+      const query = this.getQueryString();
       this.$router.push({ 
         name: 'home', 
         query: Object.assign({}, this.$route.query, query)
