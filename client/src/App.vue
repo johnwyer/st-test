@@ -52,12 +52,12 @@ export default {
     }
   },
   methods: {
-    dialogShow(item){
+    onOpenModal(item){
       this.filter.showItem.selected = item.id;
       this.updateQueryString();
       eventEmitter.$emit("modalOpen", item);
     },
-    dialogHide(){
+    onCloseModal(){
       this.filter.showItem.selected = '';
       this.updateQueryString();
       eventEmitter.$emit("modalClose");
@@ -106,7 +106,7 @@ export default {
       if(showModal) {            
         queryString.showItem = modalItem.id;
         this.$nextTick(() => {
-          this.dialogShow(modalItem);
+          this.onOpenModal(modalItem);
         });
       } else {
         this.filter.showItem.selected = '';
@@ -209,11 +209,11 @@ export default {
     AppGrid
   },
   created(){
-    eventEmitter.$on("dialogShow", (item) => {
-      this.dialogShow(item);
+    eventEmitter.$on("onModalOpen", (item) => {
+      this.onOpenModal(item);
     });
-    eventEmitter.$on("dialogHide", () => {
-      this.dialogHide();
+    eventEmitter.$on("onModalClose", () => {
+      this.onCloseModal();
     });    
   }, 
   mounted(){

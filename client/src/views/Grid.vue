@@ -1,8 +1,8 @@
 <template>
   <div class="container-fluid">
     <modal
-      v-if="modal.show"
-      v-on:close="beforeHideModal"
+      v-if="modal.open"
+      v-on:close="beforeCloseModal"
       key="modal-auth"
       v-cloak
     >
@@ -26,7 +26,7 @@
             <div 
               class="item-play-video"
               v-if="item.type === 2" 
-              @click="beforeShowModal(item)">
+              @click="beforeOpenModal(item)">
               <span>
                 <i class="material-icons">play_arrow</i>
               </span>
@@ -52,7 +52,7 @@ export default {
     return {
       itemsList: this.items,
       modal: {
-        show: false,
+        open: false,
         src: null
       }
     };
@@ -61,18 +61,18 @@ export default {
     modal: require("./Modal.vue").default
   },
   methods: {
-    beforeShowModal: function(item){
-      eventEmitter.$emit('dialogShow', item);
+    beforeOpenModal: function(item){
+      eventEmitter.$emit('onModalOpen', item);
     },
-    showModal: function(item) {
+    openModal: function(item) {
       this.modal.src = item.src;   
-      this.modal.show = true;
+      this.modal.open = true;
     },
-    beforeHideModal: function(){
-      eventEmitter.$emit('dialogHide');
+    beforeCloseModal: function(){
+      eventEmitter.$emit('onModalClose');
     },
-    hideModal: function() {
-      this.modal.show = false;
+    closeModal: function() {
+      this.modal.open = false;
       this.modal.src = null;
     }
   },
@@ -81,10 +81,10 @@ export default {
       this.itemsList = items;
     });
     eventEmitter.$on("modalOpen", (item) => {
-      this.showModal(item);
+      this.openModal(item);
     });
     eventEmitter.$on("modalClose", () => {
-      this.hideModal();
+      this.closeModal();
     });    
   },
   mounted() {}
